@@ -134,7 +134,7 @@ public class BinarySearchTree<Type extends Comparable<? super Type>> {
             // not found, do nothing
             return null;
         }
-        
+
         int compareResult = x.compareTo(root.element);
 
         if (compareResult < 0) {
