@@ -1,5 +1,9 @@
 package com.zone.dsaa.tree;
 
+import android.util.Log;
+
+import com.zone.dsaa.debug.Debug;
+
 /**
  *
  * @param <Type>
@@ -47,10 +51,6 @@ public class BinarySearchTree<Type extends Comparable<? super Type>> {
     }
 
     public void remove(Type x) {
-
-    }
-
-    public void printTree() {
 
     }
 
@@ -153,7 +153,25 @@ public class BinarySearchTree<Type extends Comparable<? super Type>> {
         return root;
     }
 
-    private void printTree(BinaryNode<Type> root) {
+    public void printTree() {
+        if (isEmpty()) {
+            Log.d(Debug.TAG, "Empty tree");
+        }
+    }
 
+    private void printTree(BinaryNode<Type> t) {
+        if (t != null) {
+            printTree(t.left);
+            Log.d(Debug.TAG, "element = " + t.element);
+            printTree(t.right);
+        }
+    }
+
+    private int height(BinaryNode<Type> t) {
+        if (t == null) {
+            return -1;
+        }
+
+        return 1 + Math.max(height(t.left), height(t.right));
     }
 }
