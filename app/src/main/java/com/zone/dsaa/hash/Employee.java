@@ -2,7 +2,7 @@ package com.zone.dsaa.hash;
 
 public class Employee {
     @Override
-    public boolean equals(@androidx.annotation.Nullable Object obj) {
+    public boolean equals(Object obj) {
         return super.equals(obj);
     }
 
