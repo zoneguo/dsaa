@@ -2,24 +2,23 @@ package com.zone.dsaa.sort;
 
 public class Sort {
     /**
-     * 插入排序，这个排序有问题need fix
+     * 插入排序
      * @param arr
      */
     public static void insertionSort(Comparable[] arr) {
         for (int i = 1; i < arr.length; i++) {
             Comparable tmp = arr[i];
-            int j;
-            for (j = i - 1; j >= 0; j--) {
-                if (tmp.compareTo(arr[j]) < 0) {
-                    arr[j+1] = arr[j];
+            int cmpIndex;
+
+            for (cmpIndex = i - 1; cmpIndex >= 0; cmpIndex--) {
+                if (tmp.compareTo(arr[cmpIndex]) < 0) {
+                    arr[cmpIndex+1] = arr[cmpIndex];
                 } else {
-                    arr[j+1] = tmp;
                     break;
                 }
             }
-            if (j == -1) {
-                arr[j+1] = tmp;
-            }
+
+            arr[cmpIndex+1] = tmp;
         }
     }
 
@@ -144,5 +143,91 @@ public class Sort {
             arr[rightEnd] = tmpArr[rightEnd];
         }
     }
+
+    public static void quicksort(Comparable[] arr) {
+
+    }
+
+    private static final int CUTOFF = 10;
+
+    private static Comparable median3(Comparable[] arr, int left, int right) {
+        int center = (left + right) /2;
+        if (arr[center].compareTo(arr[left]) < 0) {
+            swapReferences(arr, left, center);
+        }
+
+        if (arr[right].compareTo(arr[left]) < 0) {
+            swapReferences(arr, left, right);
+        }
+
+        if (arr[right].compareTo(arr[center]) < 0) {
+            swapReferences(arr, center, right);
+        }
+
+        //place pivot at position right-1
+        swapReferences(arr, center, right -1);
+        return arr[right - 1];
+    }
+
+    private static void quicksort(Comparable[] arr, int left, int right) {
+
+    }
+
+    public static void quickSort1(Integer[] arr, int head, int tail) {
+        if (head >= tail || arr == null || arr.length == 1) {
+            return;
+        }
+
+        int left = head;
+        int right = tail;
+        int pivot = arr[head];
+
+        while(true) {
+            while(arr[left] < pivot) {
+                left++;
+            }
+
+            while(arr[right] > pivot) {
+                right--;
+            }
+
+            if (left >= right) {
+                break;
+            }
+
+            int tmp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = tmp;
+
+            left++;
+            right--;
+        }
+
+        quickSort1(arr, head, left - 1);
+        quickSort1(arr, right + 1, tail);
+    }
+
+
+    public static void quickSort2(int[] arr, int start, int end) {
+        if (start >= end) {
+            return;
+        }
+
+        int mid = partition(arr, start, end);
+        quickSort2(arr, start, mid - 1);
+        quickSort2(arr, mid + 1, end);
+    }
+
+    private static int partition(int[] arr, int start, int end) {
+        int pivot = arr[start];
+
+        while(start < end) {
+
+        }
+
+        arr[start] = pivot;
+        return start;
+    }
+
 
 }

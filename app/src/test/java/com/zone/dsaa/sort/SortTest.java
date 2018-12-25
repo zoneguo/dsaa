@@ -50,4 +50,11 @@ public class SortTest {
         Sort.mergeSort(srcArr);
         System.out.println(Utils.toString(srcArr));
     }
+
+    @Test
+    public void quickSort1() {
+        printMethodName();
+        Sort.quickSort1(srcArr, 0, srcArr.length - 1);
+        System.out.println(Utils.toString(srcArr));
+    }
 }
