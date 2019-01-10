@@ -121,9 +121,22 @@ public class Sort {
         }
     }
 
+    /**
+     * 归并排序
+     * @param arr
+     */
     public static void mergeSort(Comparable[] arr) {
         Comparable[] tmpArr = new Comparable[arr.length];
         mergeSort(arr, tmpArr, 0, arr.length -1 );
+    }
+
+    public static void mergetSort2(int[] arr) {
+        if (arr == null || arr.length <= 1) {
+            return;
+        }
+
+        int[] tmpArr = new int[arr.length];
+        mergetSort2(arr, tmpArr, 0, arr.length - 1);
     }
 
     private static void mergeSort(Comparable[] arr, Comparable[] tmpArr, int left, int right) {
@@ -132,6 +145,15 @@ public class Sort {
             mergeSort(arr, tmpArr, left, center);
             mergeSort(arr, tmpArr, center + 1, right);
             merge(arr, tmpArr, left, center + 1, right);
+        }
+    }
+
+    private static void mergetSort2(int[] arr, int[] tmpArr, int left, int right) {
+        if (left < right) {
+            int center = (left + right) / 2;
+            mergetSort2(arr, tmpArr, left, center);
+            mergetSort2(arr, tmpArr, center + 1, right);
+            merge2(arr, tmpArr, left, center + 1, right);
         }
     }
 
@@ -160,8 +182,31 @@ public class Sort {
             arr[rightEnd] = tmpArr[rightEnd];
         }
     }
+    private static void merge2(int[] arr, int[] tmpArr, int leftStart, int rightStart, int rightEnd) {
+        int leftEnd = rightStart - 1;
+        int leftPos = leftStart;
+        int rightPos = rightStart;
+        int tmpPos = leftPos;
 
-    public static void quicksort(Comparable[] arr) {
+        while(leftPos <= leftEnd && rightPos <= rightEnd) {
+            if (arr[leftPos] <= arr[rightPos]) {
+                tmpArr[tmpPos++] = arr[leftPos++];
+            } else {
+                tmpArr[tmpPos++] = arr[rightPos++];
+            }
+        }
+
+        while(leftPos <= leftEnd) {
+            tmpArr[tmpPos++] = arr[leftPos++];
+        }
+
+        while(rightPos <= rightEnd) {
+            tmpArr[tmpPos++] = arr[rightPos++];
+        }
+
+        for (int i = leftStart; i <= rightEnd; i++) {
+            arr[i] = tmpArr[i];
+        }
 
     }
 
@@ -186,9 +231,6 @@ public class Sort {
         return arr[right - 1];
     }
 
-    private static void quicksort(Comparable[] arr, int left, int right) {
-
-    }
 
     public static void quickSort1(Integer[] arr, int head, int tail) {
         if (head >= tail || arr == null || arr.length == 1) {

@@ -13,4 +13,17 @@ public final class Utils {
 
         return sb.toString();
     }
+
+    public static String toString(int[] arr) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        if (arr != null) {
+            for (int i = 0; i < arr.length; i++) {
+                sb.append(arr[i] + ",");
+            }
+        }
+        sb.append("]");
+
+        return sb.toString();
+    }
 }

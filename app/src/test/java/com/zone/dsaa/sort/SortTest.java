@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 public class SortTest {
     private static final String TAG = "SortTest";
     private Integer[] srcArr = new Integer[]{101, 11, 200, 99, 3, 10, 16, 14, 9, 11};
+    private int[] srcArr2 = new int[]{101, 11, 200, 99, 3, 10, 16, 14, 9, 11};
 
 
     public void printMethodName() {
@@ -59,6 +60,13 @@ public class SortTest {
     }
 
     @Test
+    public void mergetSort2() {
+        printMethodName();
+        Sort.mergetSort2(srcArr2);
+        System.out.println(Utils.toString(srcArr2));
+    }
+
+    @Test
     public void quickSort1() {
         printMethodName();
         Sort.quickSort1(srcArr, 0, srcArr.length - 1);
@@ -71,6 +79,7 @@ public class SortTest {
         Sort.quickSort2(srcArr, 0, srcArr.length - 1);
         System.out.println(Utils.toString(srcArr));
     }
+
 
 
 }
