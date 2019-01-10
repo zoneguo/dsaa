@@ -81,5 +81,10 @@ public class SortTest {
     }
 
 
-
+    @Test
+    public void quickSort3() {
+        printMethodName();
+        Sort.quickSort3(srcArr2, 0, srcArr2.length - 1);
+        System.out.println(Utils.toString(srcArr2));
+    }
 }

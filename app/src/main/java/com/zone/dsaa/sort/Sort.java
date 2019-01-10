@@ -309,4 +309,40 @@ public class Sort {
     }
 
 
+    private static int partition(int arr[], int left, int right) {
+        int i = left, j = right;
+        int tmp = arr[left];
+        while (i < j) {
+            while (i < j && arr[j] > tmp) {
+                j--;
+            }
+
+            if (i < j) {
+                arr[i] = arr[j];
+                i++;
+            }
+
+            while (i < j && arr[i] < tmp) {
+                i++;
+            }
+
+            if (i < j) {
+                arr[j] = arr[i];
+                j--;
+            }
+        }
+        arr[i] = tmp;
+        return i;
+    }
+
+    public static void quickSort3(int arr[], int left, int right) {
+        if(left >= right || arr == null || arr.length <= 1) {
+            return;
+        }
+
+        int mid = partition(arr, left, right);
+        quickSort3(arr, left, mid - 1);
+        quickSort3(arr, mid + 1, right);
+    }
+
 }
