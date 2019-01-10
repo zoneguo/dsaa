@@ -45,6 +45,13 @@ public class SortTest {
     }
 
     @Test
+    public void shellSort2() {
+        printMethodName();
+        Sort.shellSort2(srcArr);
+        System.out.println(Utils.toString(srcArr));
+    }
+
+    @Test
     public void mergetSort() {
         printMethodName();
         Sort.mergeSort(srcArr);
@@ -57,4 +64,13 @@ public class SortTest {
         Sort.quickSort1(srcArr, 0, srcArr.length - 1);
         System.out.println(Utils.toString(srcArr));
     }
+
+    @Test
+    public void quickSort2() {
+        printMethodName();
+        Sort.quickSort2(srcArr, 0, srcArr.length - 1);
+        System.out.println(Utils.toString(srcArr));
+    }
+
+
 }

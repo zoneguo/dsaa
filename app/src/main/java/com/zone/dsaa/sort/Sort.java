@@ -55,6 +55,23 @@ public class Sort {
         }
     }
 
+    public static void shellSort2(Integer[] arr) {
+        if (arr == null || arr.length <= 1) {
+            return;
+        }
+
+        for (int gap = arr.length/2; gap > 0; gap /= 2) {
+
+            for (int i = gap; i < arr.length; i++) {
+                int curItem = arr[i];
+                int j = i;
+                for (; j >= gap&&curItem < arr[j - gap]; j -= gap) {
+                    arr[j] = arr[j - gap];
+                }
+                arr[j] = curItem;
+            }
+        }
+    }
     /**
      * 堆排序
      * @param arr
@@ -208,8 +225,8 @@ public class Sort {
     }
 
 
-    public static void quickSort2(int[] arr, int start, int end) {
-        if (start >= end) {
+    public static void quickSort2(Integer[] arr, int start, int end) {
+        if (start >= end || arr == null || arr.length <= 1) {
             return;
         }
 
@@ -218,15 +235,35 @@ public class Sort {
         quickSort2(arr, mid + 1, end);
     }
 
-    private static int partition(int[] arr, int start, int end) {
-        int pivot = arr[start];
-
-        while(start < end) {
-
+    private static int partition(Integer[] arr, int left, int right) {
+        if (left >= right || arr == null || arr.length <= 1) {
+            return left;
         }
 
-        arr[start] = pivot;
-        return start;
+        int pivot = arr[left];
+
+        while(true) {
+            while(arr[left] < pivot) {
+                left++;
+            }
+
+            while(arr[right] > pivot) {
+                right--;
+            }
+
+            if (left >= right) {
+                break;
+            }
+
+            int tmp = arr[left];
+            arr[left] = arr[right];
+            arr[right] = tmp;
+
+            left++;
+            right--;
+        }
+
+        return left;
     }
 
 
